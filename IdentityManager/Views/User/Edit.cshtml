@@ -1,0 +1,41 @@
+﻿@model ApplicationUser
+<h1 class="text-info">Edit User</h1>
+<div class="row">
+    <div class="col-md-8">
+<form method="post" asp-action="Edit">
+    <input asp-for="@Model.Id" hidden/>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    
+    <div class="form-group">
+        <label asp-for="Name" ></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div> 
+    <div class="form-group">
+        <label asp-for="Email" ></label>
+        <input asp-for="Email" class="form-control" />
+        <input asp-for="Email" hidden />
+    </div> 
+    <div class="form-group">
+        <label asp-for="RoleId"></label>
+            <select asp-for="RoleId" asp-items="@Model.RoleListe" class="form-control">
+            <option>---Select Role--</option>
+            </select>
+        </div>
+    
+    <div class="form-group">
+        <div class="col-md-10">
+            <button type="submit" class="btn btn-success form-control">Update</button>
+            <a asp-action="Index" class="btn btn-warning" style="width:auto">Black to User</a>
+        </div>
+    </div>
+     
+</form>
+</div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
